@@ -18,49 +18,73 @@ FinalDat <-read.csv(file="final_Data.csv",header=TRUE)
 FinalData <- FinalDat  %>% select(-one_of("X"))
 FinalData <- FinalData %>%
 mutate(across(where(is.character), as.factor))
+Male = filter(FinalData, sex =='M')
+Female = filter(FinalData, sex =='F')
+LGBTQ = filter(FinalData, LGBTQ =='gay')
+Druggie = filter(FinalData, DrugUser =='yes')
 ```
 
 # Introduction
 
 A new  preventative vaccine (covid91) is under test in clinical trials. Given the nature of this vaccine it is suspected that the drug may exhibit different effectiveness across the variety of subpopulations tracked. Consider population subgroups by gender( guys and gals), drug use, and sexual orientation. Write a complete report that separately considers this drug for each subgroup and your recommendations as to whether people in the subgroup should take the vaccine. Structure your report in four sections each devoted to one of the four subgroups, use null and alternative hypothesis statements and correct statistical verbage when referencing p-values in conclusions.
 
+### Hypotheses
+
 $H_0$ = The effectiveness of the vaccine does not differ between any of the subgroups.
 
 $H_A$ = There is a difference in the vaccine's effectiveness between the four subgroups.
 
+### Methods
+
+In order to determine the relation between the different subgroups and the Covid-19 vaccine, I will assess each subgroup individually. This is a Cat~CAT situation since both variables (Subgroup and the Effectiveness of the vaccine.) For each individual subgroup, I will analyze the Graphical descriptive results via a bar chart, the numerical descriptive results with a table, the inferential results with a chi-squared test, and the inferential descriptive results through a Fischer exact test. With this data, I will determine the effectiveness of the vaccine and state my recommendation for each subgroup's use of the vaccine.
 
 
 ## Males
 
-$H_0$ = The effectiveness of the vaccine does not differ between any of the subgroups.
-
-$H_A$ = There is a difference in the vaccine's effectiveness between the four subgroups.
-
-## Methods
-
 ### Graphical Descriptive Results
+
+```{r}
+barchartGC(~infected + treatment,data=Male)
+barchartGC(~infected + treatment,data=Male, type="percent")
+```
+
+The first bar chart shows the effect of the placebo and the vaccine on whether or not Men got sick. The second chart shows the amount of males who Contracted Covid-19 versus comparing the placebo and the actual treatment. The first graph shows a slight better outcome for those with the vaccine. The second shows that vaccinated men were around 35% less likely to get Covid-19 than the placebo group. The vaccine is effective in reducing Covid cases in men.
 
 ### Numerical Descriptive Results
 
+```{r}
+table1 <- xtabs(~infected + treatment, data=Male)
+rowPerc(table1)
+colPerc(table1)
+```
+
+This table shows numerical percentages for those who got covid 19. 67.78% of Men under the placebo treatment got Covid, while only 32.22% with the vaccine got covid. Those who received the vaccine were 35.56% less likely to contract the illness
+
 ### Inferrential Results
 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
+
+The p value is 0.00002645, which is significantly less than .05; therefor, we must reject the null hypothesis.
+
 ### Male Conclusion
+
+As depicted in the bar chart, and shown in the data table, Men who received the Covid vaccine were around 35% less likely to contract the illness. As seen in the Fischer exact test, with a p-value of less than .05, we rejected the null hypothesis that the effectiveness of the vaccine differs for men. I can safely recommend that Men take the vaccine to reduce the likelihood of getting Covid.
 
 
 
 ## Females
 
-
-
-## Methods
-
 ### Graphical Descriptive Results
 
 ### Numerical Descriptive Results
 
 ### Inferrential Results
 
-### Male Conclusion
+### Female Conclusion
 
 
 
@@ -72,7 +96,7 @@ $H_A$ = There is a difference in the vaccine's effectiveness between the four su
 
 ### Inferrential Results
 
-### Male Conclusion
+### LGBTQ Conclusion
 
 
 
@@ -84,7 +108,10 @@ $H_A$ = There is a difference in the vaccine's effectiveness between the four su
 
 ### Inferrential Results
 
-### Male Conclusion
+### Druggies Conclusion
+
+
+
 
 ## Final Discussion and Conclusion
 
