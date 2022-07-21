@@ -48,7 +48,7 @@ barchartGC(~infected + treatment,data=Male)
 barchartGC(~infected + treatment,data=Male, type="percent")
 ```
 
-The first bar chart shows the effect of the placebo and the vaccine on whether or not Men got sick. The second chart shows the amount of males who Contracted Covid-19 versus comparing the placebo and the actual treatment. The first graph shows a slight better outcome for those with the vaccine. The second shows that vaccinated men were around 35% less likely to get Covid-19 than the placebo group. The vaccine is effective in reducing Covid cases in men.
+The first bar chart shows the effect of the placebo and the vaccine on whether or not Men got sick. The second chart shows the percentages of the first graph relative to the section. The graphs show a slight better outcome for those with the vaccine. Vaccinated men were around 35% less likely to get Covid-19 than the placebo group. Both graphs show about a 50/50 split between males and females under the OK section. The vaccine is effective in reducing Covid cases in men.
 
 ### Numerical Descriptive Results
 
@@ -58,7 +58,7 @@ rowPerc(table1)
 colPerc(table1)
 ```
 
-This table shows numerical percentages for those who got covid 19. 67.78% of Men under the placebo treatment got Covid, while only 32.22% with the vaccine got covid. Those who received the vaccine were 35.56% less likely to contract the illness
+This table shows numerical percentages for those who got covid 19. 67.78% of Men under the placebo treatment got Covid, while only 32.22% with the vaccine got covid. Those who received the vaccine were 35.56% less likely to contract the illness.
 
 ### Inferrential Results
 
@@ -68,7 +68,7 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-The p value is 0.00002645, which is significantly less than .05; therefor, we must reject the null hypothesis.
+The p value is 0.00000000002645, which is significantly less than .05; therefor, we must reject the null hypothesis.
 
 ### Male Conclusion
 
@@ -80,38 +80,109 @@ As depicted in the bar chart, and shown in the data table, Men who received the 
 
 ### Graphical Descriptive Results
 
+```{r}
+barchartGC(~infected + treatment,data=Female)
+barchartGC(~infected + treatment,data=Female, type="percent")
+```
+
+These graphs show that Females under the placebo are more likely to contract Covid than those vaccinated. The first graph displays the number of tested individuals and the second shows the percentages of the first graph. Both graphs show about a 50/50 split between males and females under the OK section. There are about 20% less Female covid cases with the vaccine than the placebo, making the Covid shot an advisable immunization for Females.
+
 ### Numerical Descriptive Results
+
+```{r}
+table2 <- xtabs(~infected + treatment, data=Female)
+rowPerc(table2)
+colPerc(table2)
+```
+
+This table shows numerical percentages for those who got covid 19. 58.89% of Women under the placebo treatment got Covid, while only 41.11% with the vaccine got covid. Those who received the vaccine were 17.78% less likely to contract the illness. While the vaccine does provide some from the virus, when administered to females, it showed 8.89% less effectiveness than men.
 
 ### Inferrential Results
 
+```{r}
+chisq.test(table2)
+chisqtestGC(table2)
+fisher.test(table2)
+```
+
+The p value is 0.0009484 < .05; therefor, we must reject the null hypothesis.
+
 ### Female Conclusion
 
-
+While the effectiveness of the vaccine is not quite as high as it was for males, females with the vaccine are more protected from Covid than those with the placebo. In the Male study, the difference between the placebo and the vaccinated in covid cases was 35.56%, while in the Female study, the number was exactly half. Although I still recommend that Females get the vaccine, I must note a slight deviation in effectiveness between subgroups so far. 
 
 ## LGBTQ
 
 ### Graphical Descriptive Results
 
+```{r}
+barchartGC(~infected + treatment,data=LGBTQ)
+barchartGC(~infected + treatment,data=LGBTQ, type="percent")
+```
+
+Contrary to the previous subgroups, these graphs show that the vaccinated group is experiencing significantly higher vaccinated infections than placebo infections. Additionally, the OK section of individuals is no longer 50/50, and more like 57/43. LGBTQ people are around 70% more likely to get covid with the vaccine than in the placebo group.  
+
 ### Numerical Descriptive Results
+
+```{r}
+table3 <- xtabs(~infected + treatment, data=LGBTQ)
+rowPerc(table3)
+colPerc(table3)
+```
+
+These results are vastly dissimilar from the previous two subgroups, with the number of covid cases for the placebo group being just 13.33%, and the vaccine group at 86.67. Those vaccinated are 73.34% more likely it get Covid than the placebo group.  
 
 ### Inferrential Results
 
+```{r}
+chisq.test(table3)
+chisqtestGC(table3)
+fisher.test(table3)
+```
+
+The p-value is 1.642e-09, which is less than .05, meaning we must once again, reject the null hypothesis. 
+
 ### LGBTQ Conclusion
 
+The LGBTQ study yielded vastly different results from the Male and Female studies. The LGBTQ participants saw inversely related results with less individuals in the placebo group getting sick than in the vaccinated group by a large margin. 73% more of sick individuals were vaccinated; therefor, I must advise against the vaccine for LBGTQ individuals. 
 
 
 ## Druggies
 
 ### Graphical Descriptive Results
 
+```{r}
+barchartGC(~infected + treatment,data=Druggie)
+barchartGC(~infected + treatment,data=Druggie, type="percent")
+```
+
+Similar to the LGBTQ group, individuals vaccinated were more prone to the Covid virus than those on the placebo treatment by about 70%. The OK section has remained around 50/50 for all subgroups.
+
 ### Numerical Descriptive Results
+
+```{r}
+table4 <- xtabs(~infected + treatment, data=Druggie)
+rowPerc(table4)
+colPerc(table4)
+```
+
+The vaccinated group makes up 85% of all observed druggie covid cases, while the placebo group is 15%. This split is very similar to the LGBTQ subgroup. 
 
 ### Inferrential Results
 
+```{r}
+chisq.test(table4)
+chisqtestGC(table4)
+fisher.test(table4)
+```
+
+The p-value for the Druggie subgroup is 2.886e-08, which is many orders of magnitude less than .05, so we must reject the null hypothesis.
+
 ### Druggies Conclusion
 
-
+Just like the LGBTQ Subgroup, the Druggie study saw that 85% of all observed covid cases came from the vaccinated group while the other 15% came from the placebo group. 
 
 
 ## Final Discussion and Conclusion
 
+The original question was: does the vaccine exhibit different effectiveness across the sub populations of Males, Females, LGBTQ members, and habitual intravenous drug users. The data shows that Males are the most benefited from the vaccine, followed by Females. Druggies were fairly negatively impacted by the vaccine, and lastly, LGBTQ individuals were the most negatively impacted. Although, the female and the male groups had 6X larger sample sizes than the Druggie and LGBTQ. The Females and Males both had 18370 observations, while the other two groups had a mere 3060 observations. Regardless, these are both large numbers so the data should be fairly distributed. There was a significant disparity between the effectiveness of the covid vaccine between the subgroups, and since the p-value for all subgroups was far less than .05, we must reject the null hypothesis that the effectiveness of the vaccine does not differ between any of the subgroups.
