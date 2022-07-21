@@ -175,7 +175,7 @@ chisq.test(table4)
 chisqtestGC(table4)
 fisher.test(table4)
 ```
-
+ 
 The p-value for the Druggie subgroup is 2.886e-08, which is many orders of magnitude less than .05, so we must reject the null hypothesis.
 
 ### Druggies Conclusion
