@@ -68,7 +68,23 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-The p value is 0.00000000002645, which is significantly less than .05; therefor, we must reject the null hypothesis.
+The chi-squared test gives a p-value is 0.00000000002645, which is significantly less than .05; therefor, we must reject the null hypothesis. The Fisher exact test gave an odds Ratio of 2.092 and a 95% Confidence interval from 1.667079 to 2.638055.
+
+### Efficacy
+
+```{r}
+efficMale = 2.092161/(2.092161 + 1) * 100
+efficMale = round(efficMale)
+
+confIntLower = 1.667079/(1.667079+ 1) * 100
+confIntLower = round(confIntLower)
+
+confIntUpper = 2.638055/(2.638055 + 1) * 100
+confIntUpper = round(confIntUpper)
+```
+
+The efficacy for males was `r efficMale`%.  
+The 95% Confidence Interval for efficacy was from (`r confIntLower`, `r confIntUpper`)%.
 
 ### Male Conclusion
 
@@ -102,10 +118,28 @@ This table shows numerical percentages for those who got covid 19. 58.89% of Wom
 ```{r}
 chisq.test(table2)
 chisqtestGC(table2)
-fisher.test(table2)
+ftestF = fisher.test(table2)
+ftestF
+effecF = ftestF$estimate/(ftestF$estimate + 1) * 100
 ```
 
-The p value is 0.0009484 < .05; therefor, we must reject the null hypothesis.
+The p value is 0.0009484 < .05; therefor, we must reject the null hypothesis. The Fisher exact test gave an odds Ratio of 1.428903 and a 95% Confidence interval from 1.150398 to 1.778592.   
+
+### Efficacy
+
+```{r}
+efficFemale = 1.428903/(1.428903 + 1) * 100
+efficFemale = round(efficFemale)
+
+confIntLower = 1.150398/(1.150398+ 1) * 100
+confIntLower = round(confIntLower)
+
+confIntUpper = 1.778592/(1.778592 + 1) * 100
+confIntUpper = round(confIntUpper)
+```
+
+The efficacy for Females is `r effecF`%. 
+The 95% Confidence Interval for efficacy was from (`r confIntLower`, `r confIntUpper`)%.
 
 ### Female Conclusion
 
@@ -140,7 +174,23 @@ chisqtestGC(table3)
 fisher.test(table3)
 ```
 
-The p-value is 1.642e-09, which is less than .05, meaning we must once again, reject the null hypothesis. 
+The p-value is 1.642e-09, which is less than .05, meaning we must once again, reject the null hypothesis. The Fisher exact test gave an odds Ratio of 0.1465164 and a 95% Confidence interval from  0.05991122 to 0.31196422.
+
+### Efficacy
+
+```{r}
+efficLGBTQ = 0.1465164/(0.1465164 + 1) * 100
+efficLGBTQ = round(efficLGBTQ)
+
+confIntLower = 0.05991122/(0.05991122+ 1) * 100
+confIntLower = round(confIntLower)
+
+confIntUpper = 0.31196422/(0.31196422 + 1) * 100
+confIntUpper = round(confIntUpper)
+```
+
+The efficacy for males was `r efficLGBTQ`%.  
+The 95% Confidence Interval for efficacy was from (`r confIntLower`, `r confIntUpper`)%.
 
 ### LGBTQ Conclusion
 
@@ -176,11 +226,27 @@ chisqtestGC(table4)
 fisher.test(table4)
 ```
  
-The p-value for the Druggie subgroup is 2.886e-08, which is many orders of magnitude less than .05, so we must reject the null hypothesis.
+The p-value for the Druggie subgroup is 2.886e-08, which is many orders of magnitude less than .05, so we must reject the null hypothesis. The Fisher exact test gave an odds Ratio of 0.1775019 and a 95% Confidence interval from 0.07654399 to 0.36573284.
+
+### Efficacy
+
+```{r}
+efficDruggie = 0.1775019/(0.1775019 + 1) * 100
+efficDruggie = round(efficDruggie)
+
+confIntLower = 0.07654399/(0.07654399+ 1) * 100
+confIntLower = round(confIntLower)
+
+confIntUpper = 0.36573284/(0.36573284 + 1) * 100
+confIntUpper = round(confIntUpper)
+```
+
+The efficacy for Druggies was `r efficDruggie`%.  
+The 95% Confidence Interval for efficacy was from (`r confIntLower`, `r confIntUpper`)%.
 
 ### Druggies Conclusion
 
-Just like the LGBTQ Subgroup, the Druggie study saw that 85% of all observed covid cases came from the vaccinated group while the other 15% came from the placebo group. 
+Just like the LGBTQ Subgroup, the Druggie study saw that 85% of all observed covid cases came from the vaccinated group while the other 15% came from the placebo group.
 
 
 ## Final Discussion and Conclusion
