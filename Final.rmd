@@ -68,7 +68,7 @@ chisqtestGC(table1)
 fisher.test(table1)
 ```
 
-The chi-squared test gives a p-value is 0.00000000002645, which is significantly less than .05; therefor, we must reject the null hypothesis. The Fisher exact test gave an odds Ratio of 2.092 and a 95% Confidence interval from 1.667079 to 2.638055.
+The chi-squared test gives a p-value is 0.00000000002645, which is significantly less than .05; therefor, we must reject the null hypothesis. The Fisher exact test gave an odds Ratio of 2.092 and a 95% Confidence interval from 1.667079 to 2.638055. This means that the vaccine is about 2.1 times more effective for Males.
 
 ### Efficacy
 
@@ -123,7 +123,7 @@ ftestF
 effecF = ftestF$estimate/(ftestF$estimate + 1) * 100
 ```
 
-The p value is 0.0009484 < .05; therefor, we must reject the null hypothesis. The Fisher exact test gave an odds Ratio of 1.428903 and a 95% Confidence interval from 1.150398 to 1.778592.   
+The p value is 0.0009484 < .05; therefor, we must reject the null hypothesis. The Fisher exact test gave an odds Ratio of 1.428903 and a 95% Confidence interval from 1.150398 to 1.778592.  This means that the Covid vaccine is about 1.4 times more effective for females, which is still less than the Males.  
 
 ### Efficacy
 
@@ -174,7 +174,7 @@ chisqtestGC(table3)
 fisher.test(table3)
 ```
 
-The p-value is 1.642e-09, which is less than .05, meaning we must once again, reject the null hypothesis. The Fisher exact test gave an odds Ratio of 0.1465164 and a 95% Confidence interval from  0.05991122 to 0.31196422.
+The p-value is 1.642e-09, which is less than .05, meaning we must once again, reject the null hypothesis. The Fisher exact test gave an odds Ratio of 0.1465164 and a 95% Confidence interval from  0.05991122 to 0.31196422. This means that the Covid vaccine is on average .15 times more effective for LGBTQ members, which is the lowest value so far. 
 
 ### Efficacy
 
@@ -226,7 +226,7 @@ chisqtestGC(table4)
 fisher.test(table4)
 ```
  
-The p-value for the Druggie subgroup is 2.886e-08, which is many orders of magnitude less than .05, so we must reject the null hypothesis. The Fisher exact test gave an odds Ratio of 0.1775019 and a 95% Confidence interval from 0.07654399 to 0.36573284.
+The p-value for the Druggie subgroup is 2.886e-08, which is many orders of magnitude less than .05, so we must reject the null hypothesis. The Fisher exact test gave an odds Ratio of 0.1775019 and a 95% Confidence interval from 0.07654399 to 0.36573284. This means that the vaccine is about .17 times effective for Druggies, which is More than the LGBTQ but less than Females. 
 
 ### Efficacy
 
